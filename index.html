@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Step Tracker Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1> Step Tracker Dashboard</h1>
+      <p>Real-time Arduino sensor monitoring</p>
+    </div>
+
+    <div class="connection-panel">
+      <div class="status-indicator">
+        <div class="status-dot" id="statusDot"></div>
+        <span id="connectionStatus">Disconnected</span>
+      </div>
+      <div class="connection-controls">
+        <button class="btn btn-primary" id="connectBtn">Connect Arduino</button>
+        <button class="btn btn-success" id="startBtn" disabled>Start Tracking</button>
+        <button class="btn btn-danger" id="stopBtn" disabled>Stop Tracking</button>
+        <button class="btn btn-danger" id="resetBtn">Reset Steps</button>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="card">
+        <h3>Current Steps</h3>
+        <div class="big-number" id="currentSteps">0</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="stepsProgress"></div>
+        </div>
+        <p>Goal: 10,000 steps</p>
+      </div>
+
+      <div class="card">
+        <h3>Calories Burned</h3>
+        <div class="big-number" id="caloriesBurned">0<span class="unit">kcal</span></div>
+        <p>Based on 0.04 kcal per step</p>
+      </div>
+
+      <div class="card">
+        <h3>Energy Generated</h3>
+        <div class="big-number" id="energyGenerated">0<span class="unit">mJ</span></div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="energyProgress"></div>
+        </div>
+        <p>Simulated kinetic energy</p>
+      </div>
+
+      <div class="card">
+        <h3>Battery Status</h3>
+        <div class="big-number" id="batteryLevel">85<span class="unit">%</span></div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="batteryProgress" style="width: 85%;"></div>
+        </div>
+        <p id="batteryStatus">Good</p>
+      </div>
+
+      <div class="card">
+        <h3>Today's Total</h3>
+        <div class="big-number" id="todayTotal">0</div>
+        <p id="lastUpdate">Last updated: Never</p>
+      </div>
+
+      <div class="card">
+        <h3>Weekly Average</h3>
+        <div class="big-number" id="weeklyAverage">0</div>
+        <p>Steps per day this week</p>
+      </div>
+    </div>
+
+    <div class="history-container">
+      <h3>Step History</h3>
+      <div class="history-tabs">
+        <button class="tab-btn active" data-period="daily">Daily</button>
+        <button class="tab-btn" data-period="weekly">Weekly</button>
+      </div>
+      <div id="historyContent">
+        <div id="dailyHistory">
+          <!-- Daily history items go here -->
+        </div>
+        <div id="weeklyHistory" style="display:none;">
+          <!-- Weekly history items go here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
